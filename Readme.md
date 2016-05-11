@@ -47,6 +47,12 @@
 |	'purple onion'	|	 1896	|
 |	'scallions'	|	1891	|
 
+### Appendix
+
+We graphed each cuisine and the number of ingredients used in each of their recipes in hopes that would be a differentiator. However, the cuisines were very similar.
+
+![Ingredients per Cuisine](https://raw.githubusercontent.com/zhoux10/WhatsCooking_WWC/master/sherry/ingredients_per_cuisine.png)
+
 ## **Week 2**: Discover 3 Features (Start 5/12)
 
 
