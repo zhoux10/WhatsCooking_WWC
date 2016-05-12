@@ -1,9 +1,9 @@
 # [What's Cooking](https://www.kaggle.com/c/whats-cooking)
 
 ## **Week 1**: Intro (Start 5/5)
-### Summary data
+### Summary Data
 
-#### Total recipes: 39774
+#### Total Recipes: 39774
 
 |	# of cuisines	|	20	|
 |---		|---		|
@@ -13,7 +13,7 @@
 |	'indian'	|	3003	|
 |	'chinese'	|	2673	||	'french'	|	2646	||	'cajun_creole'	|	1546	||	'thai'	|	1539	||	'japanese'	|	1423	||	'greek'	|	1175	||	'spanish'	|	989	||	'korean'	|	830	||	'vietnamese'	|	825	||	'moroccan'	|	821	||	'british'	|	804	||	'filipino'	|	755	||	'irish'	|	667	||	'jamaican'	|	526	||	'russian'	|	489	||	'brazilian'	|	467	|
 
-#### total ingredients: 428275
+#### Total Ingredients: 428275
 
 |	# of ingredients	|	6714	|
 |---		|---	 	|
@@ -47,11 +47,24 @@
 |	'purple onion'	|	 1896	|
 |	'scallions'	|	1891	|
 
-### Appendix
+### Ingredients by Cuisine
+[Full set of Pie Charts](piecharts.html)
+![Summary of Cuisines per Ingredient](piecharts_greek.png)
 
+### Number of Cuisines per Ingredient
+[Full set of Pictures](sherry/SummaryPics)
+
+![Summary of Cuisines per Ingredient](sherry/SummaryPics/KaggleDashboard.png)
+![Summary of Cuisines per Ingredient](sherry/SummaryPics/KaggleDashboard01.png)
+![Summary of Cuisines per Ingredient](sherry/SummaryPics/KaggleDashboard02.png)
+
+### Distribution of Categorized Ingredients
+![Distribution of categories of ingredients in cuisine](Judy/ingredients_clean.png)
+
+### Appendix
 We graphed each cuisine and the number of ingredients used in each of their recipes in hopes that would be a differentiator. However, the cuisines were very similar.
 
-![Ingredients per Cuisine](https://raw.githubusercontent.com/zhoux10/WhatsCooking_WWC/master/sherry/ingredients_per_cuisine.png)
+![Ingredients per Cuisine](sherry/ingredients_per_cuisine.png)
 
 ## **Week 2**: Discover 3 Features (Start 5/12)
 
