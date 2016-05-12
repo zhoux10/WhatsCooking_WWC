@@ -90,7 +90,8 @@ print "number of ingredients, ", len(list_ingredients_all(cooking_data))
 print ingredient_count(cooking_data)
 print "# of unique ingredients, ", len(list_ingredients(cooking_data))
 
-
+all_ingred = ingredient_count(cooking_data)
+print all_ingred
 #develop features
 
 meat = ['chicken', 'turkey', 'pepperoni', 'steak', 'beef', 'fish', 'shrimp', 
