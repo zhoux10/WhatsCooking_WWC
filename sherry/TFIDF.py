@@ -126,9 +126,9 @@ def get_prediction(predictions, probability):
         if cuisine_prob >= 0.4:
             try:
                 results[pred]
-                results[pred] = results[pred] + cuisine_prob
+                results[pred] = results[pred] + cuisine_prob**2
             except Exception as e:
-                results[pred] = cuisine_prob
+                results[pred] = cuisine_prob**2
             if results[pred] > max_values["value"]:
                 max_values["name"] = pred
                 max_values["value"] = results[pred]
@@ -156,7 +156,7 @@ for test_recipe in recipes_test_json:
 
 with open("data/results.csv", "a") as file:
     output = csv.writer(file)
-    output.writerow([train_file_name, test_file_name, total_recipes, failed_recipes, "Use 0.3 cut off", failed_recipes/total_recipes])
+    output.writerow([train_file_name, test_file_name, total_recipes, failed_recipes, "Try quadratic weighing", failed_recipes/total_recipes])
 
 print("Failed: ", failed_recipes)
 print("Percentage: ", failed_recipes/total_recipes)
