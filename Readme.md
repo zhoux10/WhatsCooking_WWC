@@ -73,9 +73,7 @@ We graphed each cuisine and the number of ingredients used in each of their reci
 * Higher accuracy when:
     * Each recipe was a single "document"
     * full ingredients were used rather than ingredient words
-    * cleaned for accents
-    * separated for words
-    * lowercased
+    * cleaned for accents and lowercased
     * common/meaningless modifiers removed
     * hypens/parentheticals removed
     * low alpha in NB model
