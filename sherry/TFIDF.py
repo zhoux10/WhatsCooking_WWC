@@ -85,7 +85,7 @@ recipes_bow = bow_transformer.transform(recipes['ingredients'])
 # print('number of non-zeros:', recipes_bow.nnz)
 # print('sparsity: %.2f%%' % (100.0 * recipes_bow.nnz / (recipes_bow.shape[0] * recipes_bow.shape[1])))
 
-tfidf_transformer = TfidfTransformer().fit(recipes_bow)
+tfidf_transformer = TfidfTransformer(smooth_idf=False).fit(recipes_bow)
 recipes_tfidf = tfidf_transformer.transform(recipes_bow)
 recipe_labeler = MultinomialNB().fit(recipes_tfidf, recipes['cuisine'])
 
@@ -112,7 +112,7 @@ for test_recipe in recipes_train_json:
 failed_recipe_pandas = pandas.DataFrame(data = failed_recipes_list, columns = ["id", "cuisine", "prediction"])
 with open("data/results.csv", "a") as file:
     output = csv.writer(file)
-    output.writerow([train_file_name, test_file_name, total_recipes, failed_recipes, failed_recipe_pandas.groupby('cuisine').describe(), failed_recipe_pandas.groupby('prediction').describe(), "Use non-lazy spaces"])
+    output.writerow([train_file_name, test_file_name, total_recipes, failed_recipes, failed_recipe_pandas.groupby('cuisine').describe(), failed_recipe_pandas.groupby('prediction').describe(), "Try sublinear_tf=True"])
 
 print("Failed: ", failed_recipes)
 # # TEST
