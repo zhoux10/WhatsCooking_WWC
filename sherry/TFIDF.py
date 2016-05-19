@@ -46,11 +46,6 @@ for row in recipes_json:
 
 recipes = pandas.DataFrame(data = recipes_split, columns = ["id", "cuisine", "ingredients"])
 
-# recipes = pandas.read_csv('./data/train_0.csv', sep=',', quoting=csv.QUOTE_NONE, encoding="latin",
-#                            names=["id", "cuisine", "ingredients"])
-# print(recipes.groupby('cuisine').describe())
-# print(len(recipes))
-
 def clean_string(string):
     bad_descriptions = [
                           'low\s?[a-z]+',
@@ -90,9 +85,6 @@ bow_transformer = CountVectorizer(tokenizer=separate_into_ingredients, strip_acc
 print(bow_transformer.vocabulary_)
 
 recipes_bow = bow_transformer.transform(recipes['ingredients'])
-# print('sparse matrix shape:', recipes_bow.shape)
-# print('number of non-zeros:', recipes_bow.nnz)
-# print('sparsity: %.2f%%' % (100.0 * recipes_bow.nnz / (recipes_bow.shape[0] * recipes_bow.shape[1])))
 
 tfidf_transformer = TfidfTransformer().fit(recipes_bow)
 recipes_tfidf = tfidf_transformer.transform(recipes_bow)
@@ -156,10 +148,3 @@ with open("data/results.csv", "a") as file:
 
 print("Failed: ", failed_recipes)
 print("Percentage: ", failed_recipes/total_recipes)
-# # TEST
-# recipe4 = recipes['ingredients'][3]
-# bow4 = bow_transformer.transform([recipe4])
-# tfidf4 = tfidf_transformer.transform(bow4)
-#
-# print('predicted:', recipe_labeler.predict(tfidf4)[0])
-# print('expected:', recipes.cuisine[3])
