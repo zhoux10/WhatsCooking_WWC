@@ -44,7 +44,7 @@ recipes = pandas.DataFrame(data = recipes_split, columns = ["id", "cuisine", "in
 # print(recipes.groupby('cuisine').describe())
 # print(len(recipes))
 
-bow_transformer = CountVectorizer().fit(recipes['ingredients'])
+bow_transformer = CountVectorizer(strip_accents='ascii').fit(recipes['ingredients'])
 # print(len(bow_transformer.vocabulary_))
 
 recipes_bow = bow_transformer.transform(recipes['ingredients'])
@@ -54,7 +54,7 @@ recipes_bow = bow_transformer.transform(recipes['ingredients'])
 
 tfidf_transformer = TfidfTransformer().fit(recipes_bow)
 recipes_tfidf = tfidf_transformer.transform(recipes_bow)
-recipe_labeler = MultinomialNB(alpha=0.5).fit(recipes_tfidf, recipes['cuisine'])
+recipe_labeler = MultinomialNB().fit(recipes_tfidf, recipes['cuisine'])
 
 # TEST MODEL
 total_recipes = 0
@@ -79,7 +79,7 @@ for test_recipe in recipes_train_json:
 failed_recipe_pandas = pandas.DataFrame(data = failed_recipes_list, columns = ["id", "cuisine", "prediction"])
 with open("data/results.csv", "a") as file:
     output = csv.writer(file)
-    output.writerow([train_file_name, test_file_name, total_recipes, failed_recipes, failed_recipe_pandas.groupby('cuisine').describe(), failed_recipe_pandas.groupby('prediction').describe(), "change back MultinomialNB, but with lower alpha"])
+    output.writerow([train_file_name, test_file_name, total_recipes, failed_recipes, failed_recipe_pandas.groupby('cuisine').describe(), failed_recipe_pandas.groupby('prediction').describe(), "Clean words"])
 
 # # TEST
 # recipe4 = recipes['ingredients'][3]
