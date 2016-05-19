@@ -43,7 +43,7 @@ recipes = pandas.DataFrame(data = recipes_split, columns = ["id", "cuisine", "in
 # print(recipes.groupby('cuisine').describe())
 # print(len(recipes))
 
-bow_transformer = CountVectorizer(strip_accents='ascii').fit(recipes['ingredients'])
+bow_transformer = CountVectorizer(strip_accents='ascii', stop_words="english", lowercase="true").fit(recipes['ingredients'])
 # print(len(bow_transformer.vocabulary_))
 
 recipes_bow = bow_transformer.transform(recipes['ingredients'])
@@ -78,7 +78,7 @@ for test_recipe in recipes_train_json:
 failed_recipe_pandas = pandas.DataFrame(data = failed_recipes_list, columns = ["id", "cuisine", "prediction"])
 with open("data/results.csv", "a") as file:
     output = csv.writer(file)
-    output.writerow([train_file_name, test_file_name, total_recipes, failed_recipes, failed_recipe_pandas.groupby('cuisine').describe(), failed_recipe_pandas.groupby('prediction').describe(), "Clean words"])
+    output.writerow([train_file_name, test_file_name, total_recipes, failed_recipes, failed_recipe_pandas.groupby('cuisine').describe(), failed_recipe_pandas.groupby('prediction').describe(), "Lowercase and remove common words"])
 
 # # TEST
 # recipe4 = recipes['ingredients'][3]
