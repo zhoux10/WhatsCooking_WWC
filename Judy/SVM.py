@@ -32,7 +32,7 @@ import sklearn
 import os
 from collections import Counter
 
-train = pd.read_json("data/train.json")
+train = pd.read_json("../data/train.json")
 
 #Cuisine Stats
 
