@@ -152,7 +152,7 @@ for test_recipe in recipes_train_json:
 failed_recipe_pandas = pandas.DataFrame(data = failed_recipes_list, columns = ["id", "cuisine", "prediction"])
 with open("data/results.csv", "a") as file:
     output = csv.writer(file)
-    output.writerow([train_file_name, test_file_name, total_recipes, failed_recipes, failed_recipe_pandas.groupby('cuisine').describe(), failed_recipe_pandas.groupby('prediction').describe(), "Replicate"])
+    output.writerow([train_file_name, test_file_name, total_recipes, failed_recipes, "Replicate", failed_recipes/total_recipes])
 
 print("Failed: ", failed_recipes)
 print("Percentage: ", failed_recipes/total_recipes)
