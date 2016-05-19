@@ -32,7 +32,7 @@ for row in recipes_json:
     current_ingredient = {
         "id": row["id"],
         "cuisine": row["cuisine"],
-        "ingredients": " ".join(row["ingredients"])
+        "ingredients": ", ".join(row["ingredients"])
     }
     recipes_split.append(current_ingredient)
 
@@ -43,8 +43,11 @@ recipes = pandas.DataFrame(data = recipes_split, columns = ["id", "cuisine", "in
 # print(recipes.groupby('cuisine').describe())
 # print(len(recipes))
 
-bow_transformer = CountVectorizer(strip_accents='ascii', stop_words="english", lowercase="true").fit(recipes['ingredients'])
-# print(len(bow_transformer.vocabulary_))
+def separate_into_ingredients(string):
+    return string.split(", ")
+
+bow_transformer = CountVectorizer(tokenizer=separate_into_ingredients, strip_accents='ascii', stop_words="english", lowercase="true").fit(recipes['ingredients'])
+print(bow_transformer.vocabulary_)
 
 recipes_bow = bow_transformer.transform(recipes['ingredients'])
 # print('sparse matrix shape:', recipes_bow.shape)
@@ -78,7 +81,7 @@ for test_recipe in recipes_train_json:
 failed_recipe_pandas = pandas.DataFrame(data = failed_recipes_list, columns = ["id", "cuisine", "prediction"])
 with open("data/results.csv", "a") as file:
     output = csv.writer(file)
-    output.writerow([train_file_name, test_file_name, total_recipes, failed_recipes, failed_recipe_pandas.groupby('cuisine').describe(), failed_recipe_pandas.groupby('prediction').describe(), "Lowercase and remove common words"])
+    output.writerow([train_file_name, test_file_name, total_recipes, failed_recipes, failed_recipe_pandas.groupby('cuisine').describe(), failed_recipe_pandas.groupby('prediction').describe(), "Use tokenizer"])
 
 # # TEST
 # recipe4 = recipes['ingredients'][3]
