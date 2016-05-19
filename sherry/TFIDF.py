@@ -21,7 +21,7 @@ import re
 from nltk.corpus import stopwords # Import the stop word list
 
 
-train_file = 0
+train_file = 4
 train_file_name = "./data/train_%d.json" % train_file
 test_file = (train_file + 1) % 4
 test_file_name = "./data/train_%d.json" % test_file
@@ -112,9 +112,10 @@ for test_recipe in recipes_train_json:
 failed_recipe_pandas = pandas.DataFrame(data = failed_recipes_list, columns = ["id", "cuisine", "prediction"])
 with open("data/results.csv", "a") as file:
     output = csv.writer(file)
-    output.writerow([train_file_name, test_file_name, total_recipes, failed_recipes, failed_recipe_pandas.groupby('cuisine').describe(), failed_recipe_pandas.groupby('prediction').describe(), "Try sublinear_tf=True"])
+    output.writerow([train_file_name, test_file_name, total_recipes, failed_recipes, failed_recipe_pandas.groupby('cuisine').describe(), failed_recipe_pandas.groupby('prediction').describe(), "Test for consistency"])
 
 print("Failed: ", failed_recipes)
+print("Percentage: ", failed_recipes/total_recipes)
 # # TEST
 # recipe4 = recipes['ingredients'][3]
 # bow4 = bow_transformer.transform([recipe4])
