@@ -31,11 +31,10 @@ recipes_split = []
 for row in recipes_json:
     current_ingredient = {
         "id": row["id"],
-        "cuisine": row["cuisine"]
+        "cuisine": row["cuisine"],
+        "ingredients": " ".join(row["ingredients"])
     }
-    for ingredient in row["ingredients"]:
-        current_ingredient["ingredients"] = ingredient
-        recipes_split.append(current_ingredient)
+    recipes_split.append(current_ingredient)
 
 recipes = pandas.DataFrame(data = recipes_split, columns = ["id", "cuisine", "ingredients"])
 
