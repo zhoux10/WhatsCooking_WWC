@@ -11,7 +11,22 @@
 |	'mexican'	|	6438	|
 |	'southern_us'	|	4320	|
 |	'indian'	|	3003	|
-|	'chinese'	|	2673	||	'french'	|	2646	||	'cajun_creole'	|	1546	||	'thai'	|	1539	||	'japanese'	|	1423	||	'greek'	|	1175	||	'spanish'	|	989	||	'korean'	|	830	||	'vietnamese'	|	825	||	'moroccan'	|	821	||	'british'	|	804	||	'filipino'	|	755	||	'irish'	|	667	||	'jamaican'	|	526	||	'russian'	|	489	||	'brazilian'	|	467	|
+|	'chinese'	|	2673	|
+|	'french'	|	2646	|
+|	'cajun_creole'	|	1546	|
+|	'thai'	|	1539	|
+|	'japanese'	|	1423	|
+|	'greek'	|	1175	|
+|	'spanish'	|	989	|
+|	'korean'	|	830	|
+|	'vietnamese'	|	825	|
+|	'moroccan'	|	821	|
+|	'british'	|	804	|
+|	'filipino'	|	755	|
+|	'irish'	|	667	|
+|	'jamaican'	|	526	|
+|	'russian'	|	489	|
+|	'brazilian'	|	467	|
 
 #### Total Ingredients: 428275
 
@@ -89,6 +104,16 @@ We graphed each cuisine and the number of ingredients used in each of their reci
     * Figure out probabilities where classification should be done with another model
     * Figure out which cuisines are frequently confused
     * Perhaps combine with ingredient-type and words
+## SVM with CountVectorizor
+![SVM charts](homework/wk2_svm.png)
+![SVM result](homework/wk2_svmMetrics.png)
+* TODO:
+    * Further clean data
+    * Add ingredient count feature
+    * Increase word list
+    * Add cross validation
+    * Experiment with params (only optimized for γ)
+
 
 ## **Week 3**: Find 2 Models (Start 5/19)
 
