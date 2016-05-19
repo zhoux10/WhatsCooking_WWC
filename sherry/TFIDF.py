@@ -17,6 +17,9 @@ from sklearn.cross_validation import StratifiedKFold, cross_val_score, train_tes
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.learning_curve import learning_curve
 from sklearn.svm import SVC
+import re
+from nltk.corpus import stopwords # Import the stop word list
+
 
 train_file = 0
 train_file_name = "./data/train_%d.json" % train_file
@@ -32,7 +35,7 @@ for row in recipes_json:
     current_ingredient = {
         "id": row["id"],
         "cuisine": row["cuisine"],
-        "ingredients": ", ".join(row["ingredients"])
+        "ingredients": "; ".join(row["ingredients"])
     }
     recipes_split.append(current_ingredient)
 
@@ -43,10 +46,38 @@ recipes = pandas.DataFrame(data = recipes_split, columns = ["id", "cuisine", "in
 # print(recipes.groupby('cuisine').describe())
 # print(len(recipes))
 
-def separate_into_ingredients(string):
-    return string.split(", ")
+def clean_string(string):
+    bad_descriptions = [
+                          'low\s*[a-z]*?',
+                          'nondairy',
+                          'unsweetened',
+                          'dried',
+                          'fresh',
+                          'summer',
+                          '[0-9]+%',
+                          'reduced\s*[a-z]*?',
+                          'lower\s*[a-z]*?',
+                          'small',
+                          'large',
+                          'frozen',
+                          'homemade',
+                          'canned',
+                          'nonfat',
+                          'freeze-dried',
+                          "whole wheat",
+                          "mild",
+                          "vegetarian"
+                        ]
+    bad_descriptions = ("\s" + s + "\s+" for s in bad_descriptions)
+    bad_descriptions = "|".join(bad_descriptions)
+    string = re.sub(r"\(.*?\)|\s*-\s*", "", string.lower())
+    string = re.sub(r"%s" % bad_descriptions, " ", string)
+    return string
 
-bow_transformer = CountVectorizer(tokenizer=separate_into_ingredients, strip_accents='ascii', stop_words="english", lowercase="true").fit(recipes['ingredients'])
+def separate_into_ingredients(string):
+    return re.split(r"\s*;\s*|\s+or\s+", clean_string(string))
+
+bow_transformer = CountVectorizer(tokenizer=separate_into_ingredients, strip_accents='ascii', lowercase="true").fit(recipes['ingredients'])
 print(bow_transformer.vocabulary_)
 
 recipes_bow = bow_transformer.transform(recipes['ingredients'])
@@ -67,7 +98,7 @@ with open(train_file_name) as file:
 
 for test_recipe in recipes_train_json:
     total_recipes = total_recipes + 1
-    test_bow = bow_transformer.transform(test_recipe["ingredients"])
+    test_bow = bow_transformer.transform(map(clean_string, test_recipe["ingredients"]))
     test_tfidf = tfidf_transformer.transform(test_bow)
     test_recipe["prediction"] = recipe_labeler.predict(test_tfidf)[0]
     if test_recipe["prediction"] != test_recipe["cuisine"]:
@@ -81,8 +112,9 @@ for test_recipe in recipes_train_json:
 failed_recipe_pandas = pandas.DataFrame(data = failed_recipes_list, columns = ["id", "cuisine", "prediction"])
 with open("data/results.csv", "a") as file:
     output = csv.writer(file)
-    output.writerow([train_file_name, test_file_name, total_recipes, failed_recipes, failed_recipe_pandas.groupby('cuisine').describe(), failed_recipe_pandas.groupby('prediction').describe(), "Use tokenizer"])
+    output.writerow([train_file_name, test_file_name, total_recipes, failed_recipes, failed_recipe_pandas.groupby('cuisine').describe(), failed_recipe_pandas.groupby('prediction').describe(), "Use non-lazy spaces"])
 
+print("Failed: ", failed_recipes)
 # # TEST
 # recipe4 = recipes['ingredients'][3]
 # bow4 = bow_transformer.transform([recipe4])
