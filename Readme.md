@@ -67,7 +67,9 @@ We graphed each cuisine and the number of ingredients used in each of their reci
 ![Ingredients per Cuisine](sherry/ingredients_per_cuisine.png)
 
 ## **Week 2**: Discover 3 Features (Start 5/12)
-
+### NB with TFID
+* Consistently around 45% accuracy ([Full set results for trial/error](sherry/results.csv))
+* Higher accuracy when each recipe was a "document", full ingredients were used rather than ingredient words, cleaned for accents, separated for words, lowercased, common/meaningless modifiers removed, hypens/parentheticals removed, low alpha in NB model, using MultinomialNB versus BernoulliNB
 
 ## **Week 3**: Find 2 Models (Start 5/19)
 
