@@ -62,12 +62,27 @@
 ![Distribution of categories of ingredients in cuisine](Judy/ingredients_clean.png)
 
 ### Appendix
-We graphed each cuisine and the number of ingredients used in each of their recipes in hopes that would be a differentiator. However, the cuisines were very similar.
+We graphed each cuisine and the number of ingredients used in each of their recipes in hopes that would be a differentiator. However
+* the cuisines were very similar.
 
 ![Ingredients per Cuisine](sherry/ingredients_per_cuisine.png)
 
 ## **Week 2**: Discover 3 Features (Start 5/12)
-
+### NB with TFID
+* Consistently around 61-63% accuracy ([Full set results for trial/error](sherry/data/results.csv))
+* Higher accuracy when:
+    * Each recipe was a single "document"
+    * full ingredients were used rather than ingredient words
+    * cleaned for accents and lowercased
+    * common/meaningless modifiers removed
+    * hypens/parentheticals removed
+    * low alpha in NB model
+    * using MultinomialNB versus BernoulliNB
+    * Use probability of 0.4 as cut-off point for when an ingredient is used for classifying
+* TODO:
+    * Figure out probabilities where classification should be done with another model
+    * Figure out which cuisines are frequently confused
+    * Perhaps combine with ingredient-type and words
 
 ## **Week 3**: Find 2 Models (Start 5/19)
 

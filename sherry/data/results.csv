@@ -1,0 +1,88 @@
+Train,Test,Total,Failed,Description,Percentage
+./data/train_0.json,./data/train_1.json,7953,5731,initial test,0.720608575
+initial test./data/train_0.json,./data/train_1.json,7953,5820,Change from MultinomialNB to BernoulliNB (BernoulliNB is for true/false),0.731799321
+./data/train_0.json,./data/train_1.json,7953,5832,Add binarize threshold of 0.5,0.733308186
+./data/train_0.json,./data/train_1.json,7953,5740,"change back MultinomialNB, but with lower alpha",0.721740224
+./data/train_0.json,./data/train_1.json,7953,6211,change binarize threshold to .8,0.780963159
+./data/train_0.json,./data/train_1.json,7953,5502,Use whole train file,0.69181441
+./data/train_0.json,./data/train_1.json,7953,5740,Use sublinear tfidf,0.721740224
+./data/train_0.json,./data/train_1.json,7953,5730,Clean words,0.720482837
+./data/train_0.json,./data/train_1.json,7953,5009,Join ingredients,0.629825223
+./data/train_0.json,./data/train_1.json,7953,7361,Combine all cuisines into 1,0.925562681
+./data/train_0.json,./data/train_1.json,7953,4999,Lowercase and remove common words,0.628567836
+./data/train_0.json,./data/train_1.json,7953,4999,Combine on words,0.628567836
+./data/train_0.json,./data/train_1.json,7953,6266,Combine on char_wd,0.787878788
+./data/train_0.json,./data/train_1.json,7953,4910,Use tokenizer,0.61737709
+./data/train_0.json,./data/train_1.json,7953,6399,Join test as well,0.804602037
+./data/train_0.json,./data/train_1.json,7953,4910,Remove parenthesis,0.61737709
+./data/train_0.json,./data/train_1.json,7953,4909,"Remove low fat, dried, fresh",0.617251352
+./data/train_0.json,./data/train_1.json,7953,4909,Clean test as well,0.617251352
+./data/train_0.json,./data/train_1.json,7953,4909,"Filter out reduced fat, small, large, frozen",0.617251352
+./data/train_0.json,./data/train_1.json,7953,4909,Filter out homemade and canned,0.617251352
+./data/train_0.json,./data/train_1.json,7953,4909,Remove nonfat and hyphens,0.617251352
+./data/train_0.json,./data/train_1.json,7953,4910,Strip elements in array,0.61737709
+./data/train_0.json,./data/train_1.json,7953,5017,Add a bunch of other removals,0.630831133
+./data/train_0.json,./data/train_1.json,7953,5022,regex for low,0.631459826
+./data/train_0.json,./data/train_1.json,7953,4965,Don't use regex,0.62429272
+./data/train_0.json,./data/train_1.json,7953,4933,Remove non-greedy spaced splits,0.620269081
+./data/train_0.json,./data/train_1.json,7953,4979,Add back hopefully better regex,0.626053062
+./data/train_0.json,./data/train_1.json,7953,4937,Only low,0.620772036
+./data/train_0.json,./data/train_1.json,7953,4932,Only words low,0.620143342
+./data/train_0.json,./data/train_1.json,7953,4932,Add words reduced,0.620143342
+./data/train_0.json,./data/train_1.json,7953,4938,Add all other words,0.620897774
+./data/train_0.json,./data/train_1.json,7953,4916,Don't remove hyphen and parenthesis,0.618131523
+./data/train_0.json,./data/train_1.json,7953,4916,Only remove parenthesis,0.618131523
+./data/train_0.json,./data/train_1.json,7953,4906,Only remove parenthesis,0.616874136
+./data/train_0.json,./data/train_1.json,7953,4903,"Add back hyphen, previous bad number was because of not cleaning train data",0.616496919
+./data/train_0.json,./data/train_1.json,7953,4906,Remove dark and light,0.616874136
+./data/train_0.json,./data/train_1.json,7953,4904,Remove hot and cold,0.616622658
+./data/train_0.json,./data/train_1.json,7953,4909,Remove common ingredients,0.617251352
+./data/train_0.json,./data/train_1.json,7953,4903,Remove common ingredients real,0.616496919
+./data/train_0.json,./data/train_1.json,7953,4903,Don't filter out common ingredients,0.616496919
+./data/train_0.json,./data/train_1.json,7953,4903,Split words,0.616496919
+./data/train_0.json,./data/train_1.json,7953,4921,Remove suffix,0.618760216
+./data/train_0.json,./data/train_1.json,7953,4921,Remove suffix,0.618760216
+./data/train_0.json,./data/train_1.json,7953,4903,Revert back to best solution,0.616496919
+./data/train_0.json,./data/train_1.json,7953,4903,Remove summer and lower,0.616496919
+./data/train_0.json,./data/train_1.json,7953,4903,Remove percentage,0.616496919
+./data/train_0.json,./data/train_1.json,7953,4903,Use non-lazy spaces,0.616496919
+./data/train_0.json,./data/train_1.json,7953,5175,Try norm ‘l1’,0.65069785
+./data/train_0.json,./data/train_1.json,7953,4903,Try norm ‘l2’,0.616496919
+./data/train_0.json,./data/train_1.json,7953,4965,Try use_idf=False,0.62429272
+./data/train_0.json,./data/train_1.json,7953,4901,Try smooth_idf=False,0.616245442
+./data/train_0.json,./data/train_1.json,7953,4901,Try sublinear_tf=True,0.616245442
+./data/train_0.json,./data/train_1.json,7953,4584,Try alpha=0,0.576386269
+./data/train_1.json,./data/train_2.json,7955,4853,Test for consistency,0.610056568
+./data/train_2.json,./data/train_3.json,7955,4863,Test for consistency,0.611313639
+./data/train_3.json,./data/train_0.json,7955,4786,Test for consistency,0.601634192
+./data/train_4.json,./data/train_1.json,7955,4780,Test for consistency,0.60087995
+./data/train_1.json,./data/train_2.json,7955,4524,Test for consistency with alpha=0,0.568698931
+./data/train_2.json,./data/train_3.json,7955,4496,Test for consistency with alpha=0,0.565179133
+./data/train_3.json,./data/train_0.json,7955,4458,Test for consistency with alpha=0,0.560402263
+./data/train_4.json,./data/train_1.json,7955,4501,Test for consistency with alpha=0,0.565807668
+./data/train_4.json,./data/train_1.json,7955,4501,Cooked/raw,0.565807668
+./data/train_4.json,./data/train_1.json,7955,4501,Remove non-greedy on word,0.565807668
+./data/train_4.json,./data/train_1.json,7955,4505,Don't need to start with space,0.566310497
+./data/train_4.json,./data/train_1.json,7955,4501,Either space or beginning,0.565807668
+./data/train_4.json,./data/train_1.json,7955,4509,Either space or beginning,0.566813325
+./data/train_4.json,./data/train_1.json,7955,4509,Either space or beginning,0.566813325
+./data/train_4.json,./data/train_1.json,7955,4509,Either space or beginning,0.566813325
+./data/train_4.json,./data/train_1.json,7955,4538,Remove whitespace,0.570458831
+./data/train_4.json,./data/train_1.json,7955,4509,Remove whitespace,0.566813325
+./data/train_4.json,./data/train_1.json,7955,4509,Join and split test set as well,0.566813325
+./data/train_4.json,./data/train_1.json,7955,4538,Join and split test set as well,0.570458831
+./data/train_4.json,./data/train_1.json,7955,4501,Go back to using space,0.565807668
+./data/train_4.json,./data/train_1.json,7955,4497,Add glutenfree,0.56530484
+./data/train_4.json,./data/train_1.json,7955,4491,Add glutenfree,0.564550597
+./data/train_4.json,./data/train_1.json,7955,4491,Fix spacing at beginning,0.564550597
+./data/train_4.json,./data/train_1.json,7955,4491,Fix spacing at beginning,0.564550597
+./data/train_4.json,./data/train_1.json,7955,4491,Fix spacing at beginning,0.564550597
+./data/train_4.json,./data/train_1.json,7955,4491,Fix spacing at beginning,0.564550597
+./data/train_4.json,./data/train_1.json,7955,4365,,0.548711502
+./data/train_0.json,./data/train_1.json,7955,2985,Use better matching and actual test file,0.375235701
+./data/train_1.json,./data/train_2.json,7955,3022,Replicate,0.379886864
+./data/train_2.json,./data/train_3.json,7955,2941,Replicate,0.369704588
+./data/train_3.json,./data/train_0.json,7953,3074,Replicate,0.38652081
+./data/train_4.json,./data/train_1.json,7955,2926,Replicate,0.367818982
+./data/train_4.json,./data/train_1.json,7955,4179,Remove alpha 0,0.525329981./data/train_4.json,./data/train_1.json,7955,3092,Use 0.5 cut off,0.388686360779384
+./data/train_4.json,./data/train_1.json,7955,2939,Use 0.3 cut off,0.36945317410433687
