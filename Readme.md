@@ -70,7 +70,7 @@ We graphed each cuisine and the number of ingredients used in each of their reci
 ## **Week 2**: Discover 3 Features (Start 5/12)
 ### NB with TFID
 ![Distribution of categories of ingredients in cuisine](homework/wk2.png)
-* Consistently around 61-63% accuracy ([Full set results for trial/error](sherry/data/results.csv))
+* Consistently around 63-65% accuracy ([Full set results for trial/error](sherry/data/results.csv))
 * Steps:
     * Create bag of words (or ingredient phrases in this case) for train dataset
     * Calculate tfidf for each ingredient and cuisine
@@ -85,6 +85,7 @@ We graphed each cuisine and the number of ingredients used in each of their reci
     * low alpha in NB model
     * using MultinomialNB versus BernoulliNB
     * Use probability of 0.4 as cut-off point for when an ingredient is used for classifying
+    * Used sum of quadratic probabilities (weight higher probabilities higher)
 * TODO:
     * Figure out probabilities where classification should be done with another model
     * Figure out which cuisines are frequently confused
