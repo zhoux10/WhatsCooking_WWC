@@ -31,11 +31,13 @@ with open(train_file_name) as file:
 
 recipes_split = []
 
+separator = "; "
+
 for row in recipes_json:
     current_ingredient = {
         "id": row["id"],
         "cuisine": row["cuisine"],
-        "ingredients": "; ".join(row["ingredients"])
+        "ingredients": separator.join(row["ingredients"])
     }
     recipes_split.append(current_ingredient)
 
@@ -48,34 +50,38 @@ recipes = pandas.DataFrame(data = recipes_split, columns = ["id", "cuisine", "in
 
 def clean_string(string):
     bad_descriptions = [
-                          'low\s*[a-z]*?',
+                          'low\s?[a-z]+',
                           'nondairy',
                           'unsweetened',
                           'dried',
                           'fresh',
                           'summer',
                           '[0-9]+%',
-                          'reduced\s*[a-z]*?',
-                          'lower\s*[a-z]*?',
+                          'reduced\s?[a-z]+',
+                          'lower\s?[a-z]+',
                           'small',
                           'large',
                           'frozen',
                           'homemade',
                           'canned',
                           'nonfat',
-                          'freeze-dried',
+                          'freezedried',
                           "whole wheat",
                           "mild",
-                          "vegetarian"
+                          "vegetarian",
+                          'glutenfree',
+                          "cooked",
+                          "raw"
                         ]
-    bad_descriptions = ("\s" + s + "\s+" for s in bad_descriptions)
+    bad_descriptions = ("\s+" + s + "\s+" for s in bad_descriptions)
     bad_descriptions = "|".join(bad_descriptions)
     string = re.sub(r"\(.*?\)|\s*-\s*", "", string.lower())
-    string = re.sub(r"%s" % bad_descriptions, " ", string)
+    string = re.sub(r"%s" % bad_descriptions, "", string)
     return string
 
 def separate_into_ingredients(string):
-    return re.split(r"\s*;\s*|\s+or\s+", clean_string(string))
+    cleaned_string = clean_string(string)
+    return re.split(r"\s*;\s*|\s+or\s+", cleaned_string)
 
 bow_transformer = CountVectorizer(tokenizer=separate_into_ingredients, strip_accents='ascii', lowercase="true").fit(recipes['ingredients'])
 print(bow_transformer.vocabulary_)
@@ -87,7 +93,7 @@ recipes_bow = bow_transformer.transform(recipes['ingredients'])
 
 tfidf_transformer = TfidfTransformer(smooth_idf=False).fit(recipes_bow)
 recipes_tfidf = tfidf_transformer.transform(recipes_bow)
-recipe_labeler = MultinomialNB().fit(recipes_tfidf, recipes['cuisine'])
+recipe_labeler = MultinomialNB(alpha=0).fit(recipes_tfidf, recipes['cuisine'])
 
 # TEST MODEL
 total_recipes = 0
@@ -98,7 +104,7 @@ with open(train_file_name) as file:
 
 for test_recipe in recipes_train_json:
     total_recipes = total_recipes + 1
-    test_bow = bow_transformer.transform(map(clean_string, test_recipe["ingredients"]))
+    test_bow = bow_transformer.transform(separate_into_ingredients(separator.join(test_recipe["ingredients"])))
     test_tfidf = tfidf_transformer.transform(test_bow)
     test_recipe["prediction"] = recipe_labeler.predict(test_tfidf)[0]
     if test_recipe["prediction"] != test_recipe["cuisine"]:
@@ -112,7 +118,7 @@ for test_recipe in recipes_train_json:
 failed_recipe_pandas = pandas.DataFrame(data = failed_recipes_list, columns = ["id", "cuisine", "prediction"])
 with open("data/results.csv", "a") as file:
     output = csv.writer(file)
-    output.writerow([train_file_name, test_file_name, total_recipes, failed_recipes, failed_recipe_pandas.groupby('cuisine').describe(), failed_recipe_pandas.groupby('prediction').describe(), "Test for consistency"])
+    output.writerow([train_file_name, test_file_name, total_recipes, failed_recipes, failed_recipe_pandas.groupby('cuisine').describe(), failed_recipe_pandas.groupby('prediction').describe(), "Fix spacing at beginning"])
 
 print("Failed: ", failed_recipes)
 print("Percentage: ", failed_recipes/total_recipes)
