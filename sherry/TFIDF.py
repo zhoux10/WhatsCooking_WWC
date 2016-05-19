@@ -42,9 +42,10 @@ for row in recipes_json:
     current_ingredient = {
         "id": row["id"],
         "cuisine": row["cuisine"],
-        "ingredients": separator.join(row["ingredients"])
     }
-    recipes_split.append(current_ingredient)
+    for ingredient in row["ingredients"]:
+        current_ingredient["ingredients"] = ingredient
+        recipes_split.append(current_ingredient)
 
 recipes = pandas.DataFrame(data = recipes_split, columns = ["id", "cuisine", "ingredients"])
 
@@ -89,7 +90,7 @@ def separate_into_ingredients(string):
     return re.split(r"\s*;\s*|\s+or\s+", cleaned_string)
 
 # Bag of Words for Train dataset
-bow_transformer = CountVectorizer(tokenizer=separate_into_ingredients, strip_accents='ascii', lowercase="true").fit(recipes['ingredients'])
+bow_transformer = CountVectorizer(tokenizer=clean_string, strip_accents='ascii', lowercase="true").fit(recipes['ingredients'])
 # print(bow_transformer.vocabulary_)
 
 # Transform to ingredients for the recipe
@@ -123,7 +124,7 @@ def get_prediction(predictions, probability):
     for idx, pred in enumerate(predictions):
         cuisine_idx = cuisine_to_idx[pred]
         cuisine_prob = probability[idx][cuisine_idx]
-        if cuisine_prob >= 0.4:
+        if cuisine_prob >= 0.2:
             try:
                 results[pred]
                 results[pred] = results[pred] + cuisine_prob
@@ -137,7 +138,7 @@ def get_prediction(predictions, probability):
 # For each recipe in test dataset, predict cuisine using ingredients
 for test_recipe in recipes_test_json:
     total_recipes = total_recipes + 1
-    test_bow = bow_transformer.transform(separate_into_ingredients(separator.join(test_recipe["ingredients"])))
+    test_bow = bow_transformer.transform(map(clean_string, test_recipe["ingredients"]))
     test_tfidf = tfidf_transformer.transform(test_bow)
     test_recipe["prediction"] = recipe_labeler.predict(test_tfidf)
     test_recipe["probability"] = recipe_labeler.predict_proba(test_tfidf)
@@ -156,7 +157,7 @@ for test_recipe in recipes_test_json:
 
 with open("data/results.csv", "a") as file:
     output = csv.writer(file)
-    output.writerow([train_file_name, test_file_name, total_recipes, failed_recipes, "Use 0.3 cut off", failed_recipes/total_recipes])
+    output.writerow([train_file_name, test_file_name, total_recipes, failed_recipes, "Test with split dataset and lower cutoff", failed_recipes/total_recipes])
 
 print("Failed: ", failed_recipes)
 print("Percentage: ", failed_recipes/total_recipes)
