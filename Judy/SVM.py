@@ -32,9 +32,6 @@ import sklearn
 import os
 from collections import Counter
 
-os.getcwd()
-os.chdir('C:\Users\jbark1967\Documents\KaggleContests/WWC_WhatsCooking')
-
 train = pd.read_json("data/train.json")
 
 #Cuisine Stats
