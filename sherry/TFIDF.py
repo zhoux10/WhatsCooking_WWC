@@ -24,7 +24,8 @@ from sklearn.svm import SVC
 import re
 from nltk.corpus import stopwords # Import the stop word list
 
-train_file = 0
+# CHANGE TRAIN_FILE NUMBER TO TRAIN ON DIFFERENT FILE
+train_file = 4
 train_file_name = "./data/train_%d.json" % train_file
 test_file = (train_file + 1) % 4
 test_file_name = "./data/train_%d.json" % test_file
@@ -36,6 +37,7 @@ recipes_split = []
 
 separator = "; "
 
+# Join the ingredients for each recipe object and put into an array
 for row in recipes_json:
     current_ingredient = {
         "id": row["id"],
@@ -46,6 +48,9 @@ for row in recipes_json:
 
 recipes = pandas.DataFrame(data = recipes_split, columns = ["id", "cuisine", "ingredients"])
 
+# Used to clean up un-split-up strings of ingredients separated by ;
+# Removes hyphen, parentheticals, and un-informative words
+# TODO: Currently, reduced is not working well
 def clean_string(string):
     bad_descriptions = [
                           'low\s?[a-z]+',
@@ -77,15 +82,20 @@ def clean_string(string):
     string = re.sub(r"%s" % bad_descriptions, "", string)
     return string
 
+# Clean up the string and then separate into ingredients
+# Used as tokenizer for CountVectorizer
 def separate_into_ingredients(string):
     cleaned_string = clean_string(string)
     return re.split(r"\s*;\s*|\s+or\s+", cleaned_string)
 
+# Bag of Words for Train dataset
 bow_transformer = CountVectorizer(tokenizer=separate_into_ingredients, strip_accents='ascii', lowercase="true").fit(recipes['ingredients'])
-print(bow_transformer.vocabulary_)
+# print(bow_transformer.vocabulary_)
 
+# Transform to ingredients for the recipe
 recipes_bow = bow_transformer.transform(recipes['ingredients'])
 
+# TFIDF transformer and NB model
 tfidf_transformer = TfidfTransformer().fit(recipes_bow)
 recipes_tfidf = tfidf_transformer.transform(recipes_bow)
 recipe_labeler = MultinomialNB(alpha=0).fit(recipes_tfidf, recipes['cuisine'])
@@ -94,9 +104,11 @@ recipe_labeler = MultinomialNB(alpha=0).fit(recipes_tfidf, recipes['cuisine'])
 total_recipes = 0
 failed_recipes = 0
 failed_recipes_list = []
-with open(train_file_name) as file:
-    recipes_train_json = json.load(file)
+# Load test dataset
+with open(test_file_name) as file:
+    recipes_test_json = json.load(file)
 
+# FUnction for getting overall prediction
 def get_prediction(predictions, probability):
     results = {}
     cuisine_to_idx = {}
@@ -122,7 +134,8 @@ def get_prediction(predictions, probability):
                 max_values["value"] = results[pred]
     return max_values
 
-for test_recipe in recipes_train_json:
+# For each recipe in test dataset, predict cuisine using ingredients
+for test_recipe in recipes_test_json:
     total_recipes = total_recipes + 1
     test_bow = bow_transformer.transform(separate_into_ingredients(separator.join(test_recipe["ingredients"])))
     test_tfidf = tfidf_transformer.transform(test_bow)
@@ -141,10 +154,9 @@ for test_recipe in recipes_train_json:
           "final_prediction": test_recipe["final_prediction"],
         })
 
-failed_recipe_pandas = pandas.DataFrame(data = failed_recipes_list, columns = ["id", "cuisine", "prediction"])
 with open("data/results.csv", "a") as file:
     output = csv.writer(file)
-    output.writerow([train_file_name, test_file_name, total_recipes, failed_recipes, "Replicate", failed_recipes/total_recipes])
+    output.writerow([train_file_name, test_file_name, total_recipes, failed_recipes, "Use 0.3 cut off", failed_recipes/total_recipes])
 
 print("Failed: ", failed_recipes)
 print("Percentage: ", failed_recipes/total_recipes)

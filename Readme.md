@@ -69,7 +69,7 @@ We graphed each cuisine and the number of ingredients used in each of their reci
 
 ## **Week 2**: Discover 3 Features (Start 5/12)
 ### NB with TFID
-* Consistently around 71-73% accuracy ([Full set results for trial/error](sherry/data/results.csv))
+* Consistently around 61-63% accuracy ([Full set results for trial/error](sherry/data/results.csv))
 * Higher accuracy when:
     * Each recipe was a single "document"
     * full ingredients were used rather than ingredient words

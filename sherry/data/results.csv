@@ -78,16 +78,11 @@ initial test./data/train_0.json,./data/train_1.json,7953,5820,Change from Multin
 ./data/train_4.json,./data/train_1.json,7955,4491,Fix spacing at beginning,0.564550597
 ./data/train_4.json,./data/train_1.json,7955,4491,Fix spacing at beginning,0.564550597
 ./data/train_4.json,./data/train_1.json,7955,4491,Fix spacing at beginning,0.564550597
-./data/train_4.json,./data/train_1.json,7955,4365,"Empty DataFrameColumns: []Index: []",0.548711502
-./data/train_4.json,./data/train_1.json,7955,2265,Use better matching,0.284726587
-./data/train_4.json,./data/train_1.json,7955,2265,Use default smoothing,0.284726587
-./data/train_4.json,./data/train_1.json,7955,3216,Use BernoulliNB,0.404274041
-./data/train_4.json,./data/train_1.json,7955,2291,Loosen probability constraints,0.287994972
-./data/train_4.json,./data/train_1.json,7955,2875,Increase probability constraints,0.36140792
-./data/train_4.json,./data/train_1.json,7955,2466,Increase probability constraints,0.309993715
-./data/train_4.json,./data/train_1.json,7955,2229,Increase probability constraints,0.280201131
-./data/train_4.json,./data/train_1.json,7955,2684,Tokenize by word,0.337397863
-./data/train_3.json,./data/train_0.json,7955,2308,Replicate,0.290131992
-./data/train_2.json,./data/train_3.json,7955,2164,Replicate,0.27203017
-./data/train_1.json,./data/train_2.json,7955,2175,Replicate,0.273412948
-./data/train_0.json,./data/train_1.json,7953,2263,Replicate,0.284546712
+./data/train_4.json,./data/train_1.json,7955,4365,,0.548711502
+./data/train_0.json,./data/train_1.json,7955,2985,Use better matching and actual test file,0.375235701
+./data/train_1.json,./data/train_2.json,7955,3022,Replicate,0.379886864
+./data/train_2.json,./data/train_3.json,7955,2941,Replicate,0.369704588
+./data/train_3.json,./data/train_0.json,7953,3074,Replicate,0.38652081
+./data/train_4.json,./data/train_1.json,7955,2926,Replicate,0.367818982
+./data/train_4.json,./data/train_1.json,7955,4179,Remove alpha 0,0.525329981./data/train_4.json,./data/train_1.json,7955,3092,Use 0.5 cut off,0.388686360779384
+./data/train_4.json,./data/train_1.json,7955,2939,Use 0.3 cut off,0.36945317410433687
