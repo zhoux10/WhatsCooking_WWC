@@ -69,7 +69,13 @@ We graphed each cuisine and the number of ingredients used in each of their reci
 
 ## **Week 2**: Discover 3 Features (Start 5/12)
 ### NB with TFID
+![Distribution of categories of ingredients in cuisine](homework/wk2.png)
 * Consistently around 61-63% accuracy ([Full set results for trial/error](sherry/data/results.csv))
+* Steps:
+    * Create bag of words (or ingredient phrases in this case) for train dataset
+    * Calculate tfidf for each ingredient and cuisine
+    * Use MultinomialNB model, with tfidf and accompanying cuisines, to match up recipes
+    * Predict based on cuisine with highest probability, calculated by summing cuisine probability for ingredient with probabilities higher than 0.4
 * Higher accuracy when:
     * Each recipe was a single "document"
     * full ingredients were used rather than ingredient words
