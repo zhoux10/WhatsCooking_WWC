@@ -105,18 +105,45 @@ We graphed each cuisine and the number of ingredients used in each of their reci
     * Figure out probabilities where classification should be done with another model
     * Figure out which cuisines are frequently confused
     * Perhaps combine with ingredient-type and words
+
 ### SVM with CountVectorizor
 ![SVM charts](homework/wk2_svm.png)
 ![SVM result](homework/wk2_svmMetrics.png)
+
 * TODO:
     * Further clean data
     * Add ingredient count feature
     * Increase word list
     * Add cross validation
     * Experiment with params (only optimized for γ)
-### KNN 
-![knn result](knn_result.txt)
-*knn(train = traindf, test = testdf,cl = prc_train_labels, k=3)
+
+### KNN
+[knn result](Greetika/knn_result.txt)
+
+* knn(train = traindf, test = testdf,cl = prc_train_labels, k=3)
+
+|	Cuisine	|	Predictions	|
+|---		|---	 	|
+| brazilian |  0  <br/> 0.044<br/> 0.000<br/> 0.000<br/> 0.000|
+| british |      0 <br/> 0.026 <br/> 0.000 <br/> 0.000 <br/> 0.000 <br/>|
+| cajun_creole | |
+| chinese |      0 <br/> 0.188 <br/> 0.000 <br/> 0.000 <br/> 0.000|
+| filipino ||
+| french |     0 <br/> 0.300 <br/> 0.000 <br/> 0.000 <br/> 0.000|
+| greek |     0 <br/> 0.600 <br/> 0.000 <br/> 0.000 <br/> 0.000 |
+| indian |      0 <br/> 0.094 <br/> 0.000 <br/> 0.000 <br/> 0.000|
+| irish ||
+| italian |      1 <br/> 6.371 <br/> 0.006 <br/> 0.025 <br/> 0.001|
+| jamaican ||
+| japanese |       3 <br/> 0.893 <br/> 0.150 <br/> 0.043 <br/> 0.004|
+| korean |     0 <br/> 0.138 <br/> 0.000 <br/> 0.000 <br/> 0.000|
+| mexican |    109 <br/> 0.006 <br/> 0.784 <br/> 0.172 <br/> 0.136 |
+| moroccan |     0 <br/> 0.020 <br/> 0.000 <br/> 0.000 <br/> 0.000|
+| russian |     0 <br/> 0.016 <br/> 0.000 <br/> 0.000 <br/> 0.000|
+| southern_us |     0 <br/> 1.365 <br/> 0.000 <br/> 0.000 <br/> 0.000|
+| spanish ||
+| thai |     0 <br/> 0.065 <br/> 0.000 <br/> 0.000 <br/> 0.000|
+| vietnamese |     0 <br/> 0.012 <br/> 0.000 <br/> 0.000 <br/> 0.000|
 
 
 ## **Week 3**: Find 2 Models (Start 5/19)
