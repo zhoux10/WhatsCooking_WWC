@@ -3,22 +3,24 @@
 <!-- TOC depthFrom:1 depthTo:3 withLinks:1 updateOnSave:1 orderedList:0 -->
 
 - [[What's Cooking](https://www.kaggle.com/c/whats-cooking)](#whats-cookinghttpswwwkagglecomcwhats-cooking)
-	- [**Week 1**: Intro (Start 5/5)](#week-1-intro-start-55)
+	- [**Week 1**: Intro (End 5/5)](#week-1-intro-end-55)
+	- [**Week 2**: Discover 3 Features (End 5/12)](#week-2-discover-3-features-end-512)
 		- [Summary Data](#summary-data)
 		- [Ingredients by Cuisine](#ingredients-by-cuisine)
 		- [Number of Cuisines per Ingredient](#number-of-cuisines-per-ingredient)
 		- [Distribution of Categorized Ingredients](#distribution-of-categorized-ingredients)
 		- [Appendix](#appendix)
-	- [**Week 2**: Discover 3 Features (Start 5/12)](#week-2-discover-3-features-start-512)
+	- [**Week 3**: Find 2 Models (End 5/19)](#week-3-find-2-models-end-519)
 		- [NB with TFID](#nb-with-tfid)
 		- [SVM with CountVectorizor](#svm-with-countvectorizor)
 		- [KNN](#knn)
-	- [**Week 3**: Find 2 Models (Start 5/19)](#week-3-find-2-models-start-519)
-	- [**Week 4**: Submit 1 Kaggle (Start 6/2)](#week-4-submit-1-kaggle-start-62)
+	- [**Week 4**: Submit 1 Kaggle (End 6/2)](#week-4-submit-1-kaggle-end-62)
 
 <!-- /TOC -->
 
-## **Week 1**: Intro (Start 5/5)
+## **Week 1**: Intro (End 5/5)
+
+## **Week 2**: Discover 3 Features (End 5/12)
 ### Summary Data
 
 #### Total Recipes: 39774
@@ -100,7 +102,7 @@ We graphed each cuisine and the number of ingredients used in each of their reci
 
 ![Ingredients per Cuisine](sherry/ingredients_per_cuisine.png)
 
-## **Week 2**: Discover 3 Features (Start 5/12)
+## **Week 3**: Find 2 Models (End 5/19)
 ### NB with TFID
 ![Distribution of categories of ingredients in cuisine](homework/wk2.png)
 * Consistently around 63-65% accuracy ([Full set results for trial/error](sherry/data/results.csv))
@@ -163,8 +165,4 @@ We graphed each cuisine and the number of ingredients used in each of their reci
 | thai |     0 <br/> 0.065 <br/> 0.000 <br/> 0.000 <br/> 0.000|
 | vietnamese |     0 <br/> 0.012 <br/> 0.000 <br/> 0.000 <br/> 0.000|
 
-
-## **Week 3**: Find 2 Models (Start 5/19)
-
-
-## **Week 4**: Submit 1 Kaggle (Start 6/2)
+## **Week 4**: Submit 1 Kaggle (End 6/2)
