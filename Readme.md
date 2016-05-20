@@ -118,7 +118,7 @@ We graphed each cuisine and the number of ingredients used in each of their reci
     * Experiment with params (only optimized for γ)
 
 ### KNN
-[knn result](Greetika/knn_result.txt)
+[knn result](Geetika/knn_result.txt)
 
 * knn(train = traindf, test = testdf,cl = prc_train_labels, k=3)
 
