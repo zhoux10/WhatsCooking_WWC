@@ -1,5 +1,23 @@
 # [What's Cooking](https://www.kaggle.com/c/whats-cooking)
 
+<!-- TOC depthFrom:1 depthTo:3 withLinks:1 updateOnSave:1 orderedList:0 -->
+
+- [[What's Cooking](https://www.kaggle.com/c/whats-cooking)](#whats-cookinghttpswwwkagglecomcwhats-cooking)
+	- [**Week 1**: Intro (Start 5/5)](#week-1-intro-start-55)
+		- [Summary Data](#summary-data)
+		- [Ingredients by Cuisine](#ingredients-by-cuisine)
+		- [Number of Cuisines per Ingredient](#number-of-cuisines-per-ingredient)
+		- [Distribution of Categorized Ingredients](#distribution-of-categorized-ingredients)
+		- [Appendix](#appendix)
+	- [**Week 2**: Discover 3 Features (Start 5/12)](#week-2-discover-3-features-start-512)
+		- [NB with TFID](#nb-with-tfid)
+		- [SVM with CountVectorizor](#svm-with-countvectorizor)
+		- [KNN](#knn)
+	- [**Week 3**: Find 2 Models (Start 5/19)](#week-3-find-2-models-start-519)
+	- [**Week 4**: Submit 1 Kaggle (Start 6/2)](#week-4-submit-1-kaggle-start-62)
+
+<!-- /TOC -->
+
 ## **Week 1**: Intro (Start 5/5)
 ### Summary Data
 
