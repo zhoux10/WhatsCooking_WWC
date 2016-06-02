@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
-""" 
-    
+"""
+
     The dataset has the form:
 {
  "id": 24717,
@@ -19,7 +19,7 @@
      "sweet potatoes"
  ]
  },
-    
+
 """
 
 import json
@@ -32,10 +32,7 @@ import sklearn
 import os
 from collections import Counter
 
-os.getcwd()
-os.chdir('C:\Users\jbark1967\Documents\KaggleContests/WWC_WhatsCooking')
-
-train = pd.read_json("data/train.json")
+train = pd.read_json("../data/train.json")
 
 #Cuisine Stats
 
@@ -43,7 +40,7 @@ train.describe()
 train.shape
 train.head()
 
-#dataframe mods:  
+#dataframe mods:
 
 #add col w/ ingredient counts
 
@@ -60,27 +57,26 @@ def ingred_clean(input):
     for x in input:
         #remove everything but letters:
         letters_only = re.sub("[^a-zA-Z]", " ", x) 
-        letters_only = re.sub('\s$', '', letters_only)
 
         #Convert to lower case, split into individual words
-        words = letters_only.lower().split() 
+        words = letters_only.lower().split()
         #In Python, searching a set is much faster than searching
         #a list, so convert the stop words to a set
-        stops = set(stopwords.words("english"))                  
-        # 
+        stops = set(stopwords.words("english"))
+        #
         #Remove stop words
         meaningful_words = [w for w in words if not w in stops]
-        #print meaningful_words
+        #print(meaningful_words)
         #
-        #Join the words back into one string separated by space, 
+        #Join the words back into one string separated by space,
     # and return the result.
-        
-        sublist = sublist + meaningful_words    #return( " ".join( meaningful_words ))   
-        #print sublist #return meaningful_words
+
+        sublist = sublist + meaningful_words    #return( " ".join( meaningful_words ))
+        #print(sublist #return meaningful_words)
     return(" ".join( sublist))
-    
-train["cl_ing"]=train["ingredients"].apply(ingred_clean)   
-    
+
+train["cl_ing"]=train["ingredients"].apply(ingred_clean)
+
 #split feature/label and train/test
 from sklearn import cross_validation
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -93,7 +89,7 @@ features_train, features_test, labels_train, labels_test = cross_validation.trai
 #Create bag of words vector
 from sklearn.feature_extraction.text import CountVectorizer
 
-    # Initialize the "CountVectorizer" object, set max features to 90% 
+    # Initialize the "CountVectorizer" object, set max features to 90%
     # len(set(clean_ingred_all))
 vectorizer = CountVectorizer(analyzer = "word",   \
                             ngram_range=(1,2), \
@@ -129,7 +125,7 @@ labels_test_f = labels_test.as_matrix()
 # # add in ingred count. need some help to add ingred_count column...
 # features_train_f = np.append(features_train_v,features_train["ingred_count"])
 # features_test_f = np.append(features_test_v,features_test['ingred_count'])
-# 
+#
 #==============================================================================
 #apply classifier
 from sklearn import svm
@@ -142,11 +138,21 @@ clf.fit(features_train_f, labels_train_f)
 pred = clf.predict(features_test_f)
 
 accuracy = accuracy_score(labels_test, pred)
+<<<<<<< HEAD
 report = class_rep(labels_test_f, pred)
 print "accuracy: ", accuracy
 print "report: ", report
+||||||| merged common ancestors
+report = class_rep(labels_test, pred)
+print "accuracy: ", accuracy
+print "report: ", report
+=======
+report = class_rep(labels_test, pred)
+print("accuracy: ", accuracy)
+print("report: ", report)
+>>>>>>> f1991559fbada5de8ec94dfecf3cbcbbb1c11da1
 
-print feature_name
+print(feature_name)
 
 # Compute confusion matrix
 from sklearn.metrics import confusion_matrix
@@ -195,5 +201,5 @@ plt.show()
 #==============================================================================
 ##
 #reference file = explore_Enron_data.py Udacity course
-#https://www.kaggle.com/c/word2vec-nlp-tutorial/details/part-1-for-beginners-bag-of-words                            
+#https://www.kaggle.com/c/word2vec-nlp-tutorial/details/part-1-for-beginners-bag-of-words
 ##

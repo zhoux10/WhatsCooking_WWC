@@ -84,7 +84,12 @@ initial test./data/train_0.json,./data/train_1.json,7953,5820,Change from Multin
 ./data/train_2.json,./data/train_3.json,7955,2941,Replicate,0.369704588
 ./data/train_3.json,./data/train_0.json,7953,3074,Replicate,0.38652081
 ./data/train_4.json,./data/train_1.json,7955,2926,Replicate,0.367818982
-./data/train_4.json,./data/train_1.json,7955,4179,Remove alpha 0,0.525329981./data/train_4.json,./data/train_1.json,7955,3092,Use 0.5 cut off,0.388686360779384
-./data/train_4.json,./data/train_1.json,7955,2939,Use 0.3 cut off,0.36945317410433687
-./data/train_4.json,./data/train_1.json,7955,7633,Test with split dataset,0.9595223130106851
-./data/train_4.json,./data/train_1.json,7955,6027,Test with split dataset and lower cutoff,0.7576367064739158
+./data/train_4.json,./data/train_1.json,7955,4179,Remove alpha 0,0.525329981
+./data/train_4.json,./data/train_1.json,7955,3092,Use 0.5 cut off,0.388686361
+./data/train_4.json,./data/train_1.json,7955,2939,Use 0.3 cut off,0.369453174
+./data/train_4.json,./data/train_1.json,7955,7633,Test with split dataset,0.959522313
+./data/train_4.json,./data/train_1.json,7955,6027,Test with split dataset and lower cutoff,0.757636706
+./data/train_4.json,./data/train_1.json,7955,2878,Try cubic function weight,0.361785041
+./data/train_4.json,./data/train_1.json,7955,2928,Try exponential function weight,0.368070396
+./data/train_4.json,./data/train_1.json,7955,2938,Try weightinig **5,0.369327467
+./data/train_4.json,./data/train_1.json,7955,2862,Try quadratic weighing,0.359773727
