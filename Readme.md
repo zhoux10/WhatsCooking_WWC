@@ -104,6 +104,7 @@ We graphed each cuisine and the number of ingredients used in each of their reci
     * Figure out probabilities where classification should be done with another model
     * Figure out which cuisines are frequently confused
     * Perhaps combine with ingredient-type and words
+
 ### SVM with CountVectorizor
 ![SVM charts](homework/wk2_svm.png)
 ![SVM result](homework/wk2_svmMetrics.png)
@@ -113,6 +114,7 @@ We graphed each cuisine and the number of ingredients used in each of their reci
     * Increase word list
     * Add cross validation
     * Experiment with params (only optimized for γ)
+
 ### KNN 
 ![knn result](knn_result.txt)
 *knn(train = traindf, test = testdf,cl = prc_train_labels, k=3)
