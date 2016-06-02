@@ -166,6 +166,6 @@ We graphed each cuisine and the number of ingredients used in each of their reci
 | vietnamese |     0 <br/> 0.012 <br/> 0.000 <br/> 0.000 <br/> 0.000|
 
 ## **Week 4**: Submit 1 Kaggle (End 6/2)
-[pipeline](homework/wk3_pipeline.png)
-[kaggle submission](homework/kaggleSub1.png)
+![pipeline](homework/wk3_pipeline.png)
+![kaggle submission](homework/kaggleSub1.png)
 
