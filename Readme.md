@@ -136,17 +136,6 @@ We graphed each cuisine and the number of ingredients used in each of their reci
     * Increase word list
     * Add cross validation
     * Experiment with params (only optimized for γ)
-<<<<<<< HEAD
-
-### KNN 
-![knn result](knn_result.txt)
-*knn(train = traindf, test = testdf,cl = prc_train_labels, k=3)
-||||||| merged common ancestors
-### KNN 
-![knn result](knn_result.txt)
-*knn(train = traindf, test = testdf,cl = prc_train_labels, k=3)
-=======
->>>>>>> f1991559fbada5de8ec94dfecf3cbcbbb1c11da1
 
 ### KNN
 [knn result](Geetika/knn_result.txt)
@@ -177,3 +166,6 @@ We graphed each cuisine and the number of ingredients used in each of their reci
 | vietnamese |     0 <br/> 0.012 <br/> 0.000 <br/> 0.000 <br/> 0.000|
 
 ## **Week 4**: Submit 1 Kaggle (End 6/2)
+[pipeline](homework/wk3_pipeline.png)
+[kaggle submission](homework/kaggleSub1.png)
+
