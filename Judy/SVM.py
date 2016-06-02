@@ -72,7 +72,7 @@ def ingred_clean(input):
     # and return the result.
 
         sublist = sublist + meaningful_words    #return( " ".join( meaningful_words ))
-        #print(sublist #return meaningful_words)
+        #print sublist #return meaningful_words
     return(" ".join( sublist))
 
 train["cl_ing"]=train["ingredients"].apply(ingred_clean)

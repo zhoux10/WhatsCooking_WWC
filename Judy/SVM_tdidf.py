@@ -32,9 +32,6 @@ import sklearn
 import os
 from collections import Counter
 
-os.getcwd()
-os.chdir('C:\Users\jbark1967\Documents\KaggleContests/WWC_WhatsCooking')
-
 train = pd.read_json("data/train.json")
 
 #Cuisine Stats
@@ -189,8 +186,8 @@ clf.fit(features_train_f, labels_train['cuisine'].values)
 accuracy = accuracy_score(labels_test_f, pred)
 report = class_rep(labels_test_f, pred)
 
-print "accuracy: ", accuracy
-print "report: ", report
+print("accuracy: ", accuracy)
+print("report: ", report)
 
 
 
