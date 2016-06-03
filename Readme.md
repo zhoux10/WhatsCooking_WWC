@@ -138,10 +138,6 @@ We graphed each cuisine and the number of ingredients used in each of their reci
     * Experiment with params (only optimized for γ)
 
 ### KNN
-![knn result](knn_result.txt)
-* knn(train = traindf, test = testdf,cl = prc_train_labels, k=3)
-
-### KNN
 [knn result](Geetika/knn_result.txt)
 
 * knn(train = traindf, test = testdf,cl = prc_train_labels, k=3)
@@ -170,5 +166,14 @@ We graphed each cuisine and the number of ingredients used in each of their reci
 | vietnamese |     0 <br/> 0.012 <br/> 0.000 <br/> 0.000 <br/> 0.000|
 
 ## **Week 4**: Submit 1 Kaggle (End 6/2)
-![SVM result](homework/kaggleSub1.png)
+
+###Pipeline
+![pipeline](homework/wk3_pipeline.png)
+###Kaggle result
+![kaggle submission](homework/kaggleSub1.png)
 ![NC result](sherry/NB_submission.png)
+###Confusion Matrix
+![confusion matrix](homework/wk3_cm.png)
+[optimization](homework/wk3_optimize.png)
+
+>>>>>>> ade31429f4607114f271eb8b11b56d3560c0d364
