@@ -175,5 +175,3 @@ We graphed each cuisine and the number of ingredients used in each of their reci
 ###Confusion Matrix
 ![confusion matrix](homework/wk3_cm.png)
 [optimization](homework/wk3_optimize.png)
-
->>>>>>> ade31429f4607114f271eb8b11b56d3560c0d364
