@@ -252,7 +252,6 @@ for test_recipe in recipes_test_json:
     # WRITE row
     with open("data/nb_results.csv", "a") as file:
         output = csv.writer(file)
-        output.writerow(["id", "cuisine"])
         output.writerow([test_recipe["id"], prediction_name])
 
 # TEST ROW

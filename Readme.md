@@ -171,3 +171,4 @@ We graphed each cuisine and the number of ingredients used in each of their reci
 
 ## **Week 4**: Submit 1 Kaggle (End 6/2)
 ![SVM result](homework/kaggleSub1.png)
+![NC result](sherry/NB_submission.png)
